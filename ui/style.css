@@ -1,0 +1,262 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    font-family: "Nunito", serif;
+  }
+
+#hud {
+  max-height: 3%;
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw; 
+  background: linear-gradient(145deg, rgba(22, 22, 22, 0.8), rgba(35, 35, 35, 0.9)); 
+  padding: 1.2vh 0.8vw; 
+  width: 15vw;
+  border-top-right-radius: 0.6vw;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8),
+  0px 2px 4px rgba(0, 0, 0, 0.6); 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+
+
+
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.status-label {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 32px;
+  color: white; 
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
+  z-index: 1;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
+
+
+}
+.square {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(145deg, rgba(10, 10, 10, 0.7), rgba(40, 40, 40, 0.9));
+  border: 1px solid rgba(95, 90, 90, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; 
+  transform: translateY(20px); 
+  animation: fadeIn 1s ease forwards; 
+}
+
+#location {
+  min-height: 3%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  bottom: 20%;
+  left: -1%; 
+  gap: 0.2vw; 
+  padding: 1vh 1vw;
+  width: auto; 
+  max-width: 18vw; 
+  letter-spacing: 1.5px;
+  font-weight: bolder;
+  border-radius: 12px; 
+  background: linear-gradient(145deg, rgba(22, 22, 22, 0.8), rgba(35, 35, 35, 0.9)); 
+  border: 1px solid rgba(95, 90, 90, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), 0px 2px 4px rgba(255, 255, 255, 0.1); 
+  overflow: hidden;
+  font-size: 1rem; 
+  color: rgba(255, 255, 255, 0.651);
+  opacity: 0;
+  transform: translateY(10px); 
+  animation: fadeIn 0.8s ease forwards;
+
+}
+
+.square::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(129, 43, 238, 0.9), 
+      rgba(168, 92, 255, 0.7), 
+      rgba(197, 134, 255, 0.5) 
+    );    transform-origin: bottom; 
+    transform: scaleY(0); 
+    transition: transform 0.3s ease-in-out;
+
+
+}
+
+.square[data-value]::after {
+    transform: scaleY(calc(var(--value, 100) / 100));
+
+}
+
+#carhud {
+  position: absolute;
+  bottom: 0%;
+  right: 0;
+  letter-spacing: 1.5px;
+
+
+}
+
+#speedContainer {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  width: 100%;
+
+}
+
+.unit {
+  font-size: 1rem;
+  color: #ccc;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+
+
+}
+
+#rpmContainer {
+  position: relative;
+  width: 300px;
+  height: 40px;
+  margin-bottom: 42px;
+  background: linear-gradient(145deg, rgba(10, 10, 10, 0.7), rgba(40, 40, 40, 0.9));
+  border-radius: 6px;
+  overflow: hidden;
+  border-radius: 4px;
+
+
+}
+
+#rpmBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(129, 43, 238, 0.9),
+    rgba(168, 92, 255, 0.7), 
+    rgba(197, 134, 255, 0.5) 
+  );    
+  width: 0%; 
+  transition: width 0.1s ease-in-out;
+  box-shadow: 
+    0 0 10px rgba(129, 43, 238, 0.2),
+    0 0 20px rgba(168, 92, 255, 0.5), 
+    inset 0 0 10px rgba(197, 134, 255, 0.7); 
+}
+
+#car-icons {
+  right: 0%;
+  width: 280px;
+  background: linear-gradient(145deg, rgba(10, 10, 10, 0.7), rgba(40, 40, 40, 0.9));
+  display: flex;
+  border-top-left-radius: 0.6vw;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8), 
+  0px 2px 4px rgba(0, 0, 0, 0.6); 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  gap: 0.6vw; 
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6vh 0.6vw; 
+  
+
+}
+
+.car-square {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(145deg, rgba(10, 10, 10, 0.7), rgba(40, 40, 40, 0.9));
+  border: 1px solid rgba(95, 90, 90, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; 
+  transform: translateY(20px); 
+  animation: fadeIn 1s ease forwards;
+}
+
+
+.square[data-value="30"]::after,
+.square[data-value="29"]::after,
+.square[data-value="28"]::after,
+.square[data-value="27"]::after,
+.square[data-value="26"]::after,
+.square[data-value="25"]::after,
+.square[data-value="24"]::after,
+.square[data-value="23"]::after,
+.square[data-value="22"]::after,
+.square[data-value="21"]::after,
+.square[data-value="20"]::after,
+.square[data-value="19"]::after,
+.square[data-value="18"]::after,
+.square[data-value="17"]::after,
+.square[data-value="16"]::after,
+.square[data-value="15"]::after,
+.square[data-value="14"]::after,
+.square[data-value="13"]::after,
+.square[data-value="12"]::after,
+.square[data-value="11"]::after,
+.square[data-value="10"]::after,
+.square[data-value="9"]::after,
+.square[data-value="8"]::after,
+.square[data-value="7"]::after,
+.square[data-value="6"]::after,
+.square[data-value="5"]::after,
+.square[data-value="4"]::after,
+.square[data-value="3"]::after,
+.square[data-value="2"]::after,
+.square[data-value="1"]::after,
+.square[data-value="0"]::after {
+  background: linear-gradient(to top, red, darkred); 
+  box-shadow: 0 0 0.5vw rgba(255, 0, 0, 0.8), 
+              0 0 0.5vw rgba(255, 0, 0, 0.6);     
+
+
+}
+
+
+
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  100% {
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
